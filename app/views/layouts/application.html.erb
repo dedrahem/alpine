@@ -5,10 +5,22 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet' type='text/css'>
 </head>
 <body>
+  <header>
+    <nav>
+      <%= link_to "BigHoss", root_path %>
+      <%= link_to "Gateway", posts_path %>
+      <%= link_to "NewPost", new_post_path %>
+      <%= link_to "UserIN", authors_path %>
+      <%= link_to "UserOUT", authors_path %>
+    </nav>
+  </header>
 
-<%= yield %>
+<div class="yieldwrap">
+  <%= yield %>
+</div>
 
 </body>
 </html>

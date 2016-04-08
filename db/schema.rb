@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160406205507) do
+ActiveRecord::Schema.define(version: 20160407222730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,37 +20,12 @@ ActiveRecord::Schema.define(version: 20160406205507) do
     t.text     "remark"
     t.integer  "post_id"
     t.integer  "user_id"
-    t.integer  "photo_id"
-    t.integer  "follower_id"
-    t.datetime "comment_date"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  create_table "followers", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "photo_id"
-    t.integer  "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "photos", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "post_id"
-    t.string   "longitude"
-    t.string   "latitude"
-    t.string   "altitude"
-    t.datetime "capture_date"
-    t.datetime "transfer_date"
-    t.integer  "comment_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "comment_id"
     t.integer  "photo_id"
     t.string   "title"
     t.text     "postbody"
@@ -58,18 +33,18 @@ ActiveRecord::Schema.define(version: 20160406205507) do
     t.datetime "post_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "longitude"
+    t.string   "latitude"
+    t.datetime "photo_date"
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "password_digest"
-    t.integer  "follower_id"
     t.string   "email"
-    t.integer  "post_id"
-    t.integer  "photo_id"
-    t.string   "message_to"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "text_number"
   end
 
 end
