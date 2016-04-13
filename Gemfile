@@ -32,13 +32,36 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'gmaps4rails', '~> 2.1', '>= 2.1.2'
+
+gem 'underscore-rails'
+
+gem 'twilio-ruby', '~> 4.11', '>= 4.11.1'
+
+gem 'authy', '~> 2.6', '>= 2.6.2'
+
 gem "refile", require: "refile/rails"
+
 gem "refile-mini_magick"
+
 gem 'refile-postgres'
 
 gem 'rails-erd', '~> 1.4', '>= 1.4.6'
 
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+
+gem 'local_time', '~> 1.0', '>= 1.0.3'
+
+gem 'acts_as_follower', '~> 0.2.1'
+
+gem 'sinatra', '~> 1.4', '>= 1.4.7'
+
+gem 'exifr', '~> 1.2', '>= 1.2.4'
+
+gem 'merit', '~> 2.3', '>= 2.3.3'
+
+gem 'rails_12factor', '~> 0.0.3', group: :production
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

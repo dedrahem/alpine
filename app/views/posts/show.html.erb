@@ -1,2 +1,40 @@
 <h1>Posts#show</h1>
 <p>Find me in app/views/posts/show.html.erb</p>
+<div class="map-page">
+    <div id="map"></div>
+</div>
+<h1 class="map-header"><%= link_to "Post Your Photo of Dylan's NYC Adventures", new_post_path %></h1>
+
+
+
+<script>
+$(window).ready(function(){
+  var handler = Gmaps.build('Google');
+  handler.buildMap({ internal: {id: 'map'}}, function(){
+    var markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    ([
+      { lat: 30.27, lng: -97.74},
+      { lat: 32.78, lng: -96.80},
+      { lat: 30.36, lng: -103.66},
+      { lat: 29.76, lng: -95.37}
+    ]);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+})
+</script>
+
+
+<h1><%= @post.title %></h1>
+  <div class="count"><strong><%= @post.like %></strong></div>
+  <h3><%= @post.user.name %></h3>
+  <%= @post.body %>
+
+  <% @post.comments.order("id desc").each do |comment| %>
+      <h3><%= comment.body %></h3>
+  <% end %>
+
+  <!-- ADD COMMENT LINK PLACED HERE WILL TAKE YOU TO root/ -->
+  <!--  (id: @post.id)    /localhost:3000/comments/new   -->
+
+<%= link_to "ADD COMMENT", new_comment_path, class: "btn btn-default"%>

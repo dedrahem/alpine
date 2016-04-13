@@ -1,2 +1,26 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1>CREATE NEW USER FORM</h1
+  <div class="container">
+      <div class="details">
+        <h2>Create a Username</h2>
+
+        <% if @user.errors.any? %>
+          <% @user.errors.full_messages.each do |error| %>
+            <p class="alert alert-danger"><strong>Input Error: <%= error %></strong></p>
+          <% end %>
+        <% end %>
+
+        <%= form_for @user do |user| %>
+
+          <div class="form-group">
+            <%= user.label :name %>
+            <%= user.text_field :name, class: "form-control" %>
+          </div>
+
+          <div class="">
+            <%= user.submit "Register Username", class: "btn btn-primary" %>
+          </div>
+
+        <% end %>
+        <hr>
+      </div>
+  </div>

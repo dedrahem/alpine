@@ -1,2 +1,29 @@
 <h1>Comments#new</h1>
 <p>Find me in app/views/comments/new.html.erb</p>
+<h1>Comments#new this is the form from the view</h1>
+<div class="page-header">
+  <h1>New Comment</h1>
+
+</div>
+
+<% if @comments.errors.any? %>
+  <% @comments.errors.full_messages.each do |error| %>
+    <p class="alert alert-danger"><strong><%= error %></strong></p>
+  <% end %>
+<% end %>
+
+<%= form_for @comments, url: "(id: @post.id)" do |f| %>
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= f.text_field :body, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.collection_select :user_id, Comment.all, :id, :commentor, {prompt: true},  {class: "form-control"} %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit class: "btn btn-primary"%>
+  </div>
+<% end %>

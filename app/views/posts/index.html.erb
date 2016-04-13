@@ -1,2 +1,35 @@
 <h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+
+<div class="postcontainer">
+  <ol>
+    <% @posts.each do |post| %>   <!-- # This do is ended down below -->
+      <li>
+      <div class="poststats">
+        <div class="titlestat"
+          <h1<%=link_to post.title, post_path(id: post.id)%></h1>
+        </div>
+          <!-- <#%= link_to upvote_post_path(id: post.id), method: :post, class: 'btn btn-default btn-sm' do %> -->
+        <div class"votestat">
+          <%= link_to upvote_post_path(id: post.id), method: :post, class: 'btn btn-default btn-sm', data: {disable: true} do %>
+            <i class="glyphicon glyphicon-triangle-top"></i>
+          <% end %>
+          <%= link_to downvote_post_path(id: post.id), method: :post, class: 'btn btn-default btn-sm' do%>
+          <i class="glyphicon glyphicon-triangle-bottom"></i>
+          <% end %>
+        </div>
+        <div class="likes">
+          <strong><%= post.like %></strong>
+        </div>
+      </div>  <!-- this closes the poststats div -->
+      <div class="namebody">
+        <div class="name">
+          <%= post.user.name %>
+        </div>
+        <div class="body">
+          <%= post.body %>
+        </div>
+      </div>  <!-- close the namebody -->
+      </li>
+    <% end %> <!-- # This is the do post end -->
+  </ol>
+  </div> <!-- close the postcontainer div -->

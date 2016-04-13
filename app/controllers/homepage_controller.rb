@@ -1,7 +1,7 @@
 class HomepageController < ApplicationController
 
   def index
-    @posts = Post.all.order(like: :desc)
+    @posts = Post.all.order(likes: :desc)
     @post = Post.find_by id: params[:id]
   end
 
