@@ -5,40 +5,26 @@ Rails.application.routes.draw do
   #  What comes first create new user - start session ?  CREATE NEW USER
 
   get 'posts' => 'posts#index',as: :posts  # B, Gateway list index view
-  get 'posts/:id' => 'posts#show',as: :post # C, get a specific post and display it
   get 'posts/new' => 'posts#new',as: :new_post # D, user get HTML form to create new post
+  get 'posts/:id' => 'posts#show',as: :post # C, get a specific post and display it
+  post "posts" => 'posts#create'
+  post 'posts/:id/upvote' => 'posts#upvote', as: :upvote_post
+  post 'posts/:id/downvote' => 'posts#downvote', as: :downvote_post
+  delete "posts/:id" => 'posts#delete'
+  patch "posts/:id" => 'posts#update'
 
-  #  post "posts" => 'posts#create'
-  #  delete "posts/:id" => 'posts#delete'
-  #  patch "posts/:id" => 'posts#update'
-  #  get "posts/:id/edit" => 'posts#edit',as: :edit_post
+  get "posts/:id/edit" => 'posts#edit',as: :edit_post
+  get 'users/new' => 'users#new', as: :new_user  # G returns the
 
-    # get "posts/new" => 'posts#new',as: :new_post
-    # get "posts" => 'posts#index',as: :posts
-    # get "authors/new" => "by_author#new",as: :new_author
-    # get "authors" => 'by_author#index',as: :authors
-    # post 'authors' => 'by_author#create'
-    # post "posts" => 'posts#create'
-    # get "posts" => 'posts#index'
-    # get "posts/:id" => 'posts#show',as: :post
-    # delete "posts/:id" => 'posts#delete'
-    # patch "posts/:id" => 'posts#update'
-    # get "posts/:id/edit" => 'posts#edit',as: :edit_post
-    # get "authors/:id" => 'by_author#show',as: :author
-    # delete "authors/:id" => 'by_author#delete'
-    # patch "by_author/:id" => 'by_author#update'
-
-
-
-
-
-
-
+  get "users/:id" => 'users#show',as: :user
+  delete "user/:id" => 'users#delete'
+  patch "user/:id" => 'users#update'
 
   get 'users/index' => 'users#index' # G display list of all USERS
-  get 'users/new' => 'users#new', as: :new_user # G returns the
+
   #  ..... HTML form for setup and creation of New User
-  post 'users' => 'users#create'  # G  on click write_data & create_user_info
+  post 'users' => 'users#create', as: :users # G  on click write_data & create_user_info
+
   delete 'users/:id' => 'users#delete' # G destroy user
 
   get 'posts/:id/comments/new' => 'comments#new', as: :new_comment # H click on ADD COMMENT
@@ -55,7 +41,8 @@ Rails.application.routes.draw do
   post 'sessions/new' => 'sessions#create' # E click and create new session
   delete 'sessions' => 'sessions#delete', as: :sign_out # F destroy and sign out
 
-  #  get "authors/:id" => 'by_author#show',as: :author
-  #  delete "authors/:id" => 'by_author#delete'
-  #  patch "by_author/:id" => 'by_author#update'
+  #  get '/register' => 'registration#new', as: :new_user
+  #  post '/register' => 'registration#create', as: :users
+
+
 end

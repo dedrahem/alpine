@@ -3,8 +3,6 @@
 <div class="map-page">
     <div id="map"></div>
 </div>
-<h1 class="map-header"><%= link_to "Post Your Photo of Dylan's NYC Adventures", new_post_path %></h1>
-
 
 
 <script>
@@ -26,12 +24,12 @@ $(window).ready(function(){
 
 
 <h1><%= @post.title %></h1>
-  <div class="count"><strong><%= @post.like %></strong></div>
+  <div class="count"><strong><%= @post.likes %></strong></div>
   <h3><%= @post.user.name %></h3>
-  <%= @post.body %>
+  <%= @post.postbody %>
 
   <% @post.comments.order("id desc").each do |comment| %>
-      <h3><%= comment.body %></h3>
+      <h3><%= comment.remark %></h3>
   <% end %>
 
   <!-- ADD COMMENT LINK PLACED HERE WILL TAKE YOU TO root/ -->

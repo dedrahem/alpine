@@ -13,9 +13,9 @@ class CommentsController < ApplicationController
   end
 
     def create_comment
-          @comment = Comment.new params.require(:comment).permit(:body, :post_id, :user_id)
+          @comment = Comment.new params.require(:comment).permit(:postbody, :post_id, :user_id)
           @post = Post.find_by id: params[:id]
-          @comment.body = params[:comment][:body]
+          @comment.remark = params[:comment][:remark]
           @comment.post_id = @post.id
           # save it
           if @comment.save

@@ -11,8 +11,17 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :body %>
-    <%= f.text_field :body, class: "form-control" %>
+    <%= f.label :postbody %>
+    <%= f.text_field :postbody, class: "form-control" %>
+    </div>
+
+  
+    <div class="form-group">
+      <%= f.label :photo %>
+      <%= f.attachment_field :photo, class: "" %>
+      <% if @post.errors[:photo].any? %>
+        <span class="mdl-textfield__error">* <%= @post.errors[:photo].join(", ") %> </span>
+      <% end %>
     </div>
 
   <div class="">

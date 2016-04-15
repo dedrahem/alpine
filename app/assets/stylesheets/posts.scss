@@ -1,3 +1,74 @@
-// Place all the styles related to the posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.postcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.poststats {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.titlestat {
+    font-size: 20px;
+    padding-right: 10px;
+}
+
+.votestat {
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    a {
+      text-decoration: none;
+      color: #95A5A6;
+    }
+}
+
+h1 {
+    font-size: 15px;
+}
+
+h2 {
+    font-size: 15px;
+}
+
+.likes {
+    font-size: 15px;
+    color: black;
+    padding-left: 12px;
+}
+
+.namebody {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 6px;
+  padding-bottom: 10px;
+}
+
+.name {
+  justify-content: left;
+  width: 80%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+  border-width: 2px;
+  border-color: gray;
+  text-decoration: none;
+  background-color: #ddedec;
+}
+
+.body {
+  justify-content: left;
+  width: 80%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+  border-width: 2px;
+  border-color: gray;
+  text-decoration: none;
+  background-color: #ddedec;
+}

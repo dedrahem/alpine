@@ -1,34 +1,61 @@
-<h1>Posts#index</h1>
+<h1>Posts#Index 4/14</h1>
 
 <div class="postcontainer">
   <ol>
     <% @posts.each do |post| %>   <!-- # This do is ended down below -->
       <li>
+        <!--  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
+        <div class="imagebox">
+          <div class="image">
+            <div class="tinybox">
+              <%= image_tag attachment_url post, :photo, :fill, 300,300 %>
+            </div>  <!-- close the tinybox div for image -->
+          </div> <!-- close image tag -->
+
+          <div class="timelatlong">
+            <div class="time">
+              <p> </p>
+            </div> <!-- close time -->
+
+            <div class="lat">
+              <%= post.latitude %>
+            </div> <!-- close lat -->
+
+            <div class="long">
+              <%= post.longitude %>
+            </div> <!-- close long -->
+
+          </div> <!-- close details of time lat long -->
+          </div> <!-- close the imagebox -->
+<!-- vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv   -->
+
+<!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM  -->
+
       <div class="poststats">
         <div class="titlestat"
           <h1<%=link_to post.title, post_path(id: post.id)%></h1>
         </div>
-          <!-- <#%= link_to upvote_post_path(id: post.id), method: :post, class: 'btn btn-default btn-sm' do %> -->
-        <div class"votestat">
-          <%= link_to upvote_post_path(id: post.id), method: :post, class: 'btn btn-default btn-sm', data: {disable: true} do %>
-            <i class="glyphicon glyphicon-triangle-top"></i>
-          <% end %>
-          <%= link_to downvote_post_path(id: post.id), method: :post, class: 'btn btn-default btn-sm' do%>
-          <i class="glyphicon glyphicon-triangle-bottom"></i>
-          <% end %>
-        </div>
         <div class="likes">
-          <strong><%= post.like %></strong>
+          <strong><%= post.likes %></strong>
         </div>
       </div>  <!-- this closes the poststats div -->
+
+<!-- WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW   -->
+
+<!-- oooooooooooooooooooooooooooooooooooooooooooooooooooooo  -->
+
       <div class="namebody">
         <div class="name">
           <%= post.user.name %>
         </div>
-        <div class="body">
-          <%= post.body %>
+        <div class="textbody">
+          <%= post.postbody %>
         </div>
-      </div>  <!-- close the namebody -->
+      </div> <!-- close the namebody tag  -->
+
+      <div class="emptydiv">
+        <p></p>
+      </div>
       </li>
     <% end %> <!-- # This is the do post end -->
   </ol>

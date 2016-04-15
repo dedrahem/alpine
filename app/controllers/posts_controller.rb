@@ -7,21 +7,24 @@ class PostsController < ApplicationController
         end
       end
 
-      
+  def new
+    @post = Post.new  id: params[:id]
+  end
 
   def index
     # @posts = Post.all
-    @posts = Post.all.order(like: :desc)
+    @posts = Post.all.order(likes: :desc)
     @users = User.all
     @comments = Comment.all
     @hash = Gmaps4rails.build_markers(@posts) do |post, marker|
         marker.lat post.latitude.to_f
         marker.lng post.longitude.to_f
         marker.picture({
-                  :url => post.image.url(:thumb),
-                  :width   => 60,
-                  :height  => 60
+                  :url => post.photo_url,
+                  :width   => 20,
+                  :height  => 20
           })
+    end
   end
 
   def show
@@ -30,27 +33,24 @@ class PostsController < ApplicationController
     @comment.post = @post
 
     if @post.latitude.nil? || @post.longitude.nil?
-          @message = "Please find your location on the map"
+        @message = "Please find your location on the map"
         else
-          @message = "Your Image and GPS MetaData Uploaded Successfully"
-        end
+        @message = "Your Image and GPS MetaData Uploaded Successfully"
+    end
   end
 
   def upvote
     @post = Post.find_by id: params[:id]
-    @post.update like: (@post.like + 1)
+    @post.update likes: (@post.likes + 1)
     redirect_to posts_path
   end
 
   def downvote
     @post = Post.find_by id: params[:id]
-    @post.update like: (@post.like - 1)
+    @post.update likes: (@post.likes - 1)
     redirect_to posts_path
   end
 
-  def new
-    @post = Post.new
-  end
 
   def edit
     @post = Post.find_by id: params[:id]
@@ -59,10 +59,12 @@ class PostsController < ApplicationController
   def create
     #init a blank new Post
     @post = Post.new
+    @post.user = @current_user
     #set the values
     @post.title = params[:post][:title]
     # @post.user_id = params[:post][:user_id]
-    @post.body = params[:post][:body]
+    @post.postbody = params[:post][:postbody]
+    @post.photo = params[:post][:photo]
     # SAVE  !
 
     if @post.save
@@ -80,7 +82,7 @@ class PostsController < ApplicationController
     @post = Post.find_by id: params[:id]
     # set values
     @post.title = params[:post][:title]
-    @post.body = params[:post][:body]
+    @post.postbody = params[:post][:postbody]
     @post.user_id = params[:post][:user_id]
     # save it
     if @post.save

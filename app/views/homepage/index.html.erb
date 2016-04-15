@@ -1,34 +1,35 @@
-<h1>Homepage#index</h1>
-<p>Find me in app/views/homepage/index.html.erb</p>
+<h1>Homepage#Index</h1>
+<p>root/app/views/homepage/index.html.erb</p>
 
-<div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
-</div>
+<div class="mapwrap">
+    <div style='width: 800px;'>
+      <div id="map" style='width: 800px; height: 400px;'></div>
+    </div>
+</div> 
 
-<script>
-$(window).ready(function(){
+  <script>
+  $(window).ready(function(){
+    var handler = Gmaps.build('Google');
+    handler.buildMap({ internal: {id: 'map'}}, function(){
+      var markers = handler.addMarkers(<%=raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+    });
+  })
+  </script>
 
-  var handler = Gmaps.build('Google');
-  handler.buildMap({ internal: {id: 'map'}}, function(){
-    var markers = handler.addMarkers(<%=raw @hash.to_json %>);
-    ([
-      { lat: 30.27, lng: -97.74},
-      { lat: 32.78, lng: -96.80},
-      { lat: 30.36, lng: -103.66},
-      { lat: 29.76, lng: -95.37}
-    ]);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-  });
-})
-
-</script>
 
 <% @posts.each do |post| %>
   <h2><%= post.title %></h2>
-  <%= image_tag attachment_url(post, :photo, :fill, 500, 500, format: :jpg )%>
+  <h2><%= post.user.name %></h2>
+<div class="image">
+  <a>
+    <%= image_tag attachment_url(post, :photo, :fill, 500, 500, format: :jpg )%>
+  </a>
+</div>
 
-<% end %>
+<%end%> <!-- close at each do post for image post -->
+
 <!--  www.rubydoc.info/gems/gmaps4rails/2.1.2  -->
 <!--  2) HTML ___  Add a div to bear your map, example: -->
 <!--  2) JS ___  add the google java scripts to the app layout dom -->

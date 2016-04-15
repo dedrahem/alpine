@@ -17,20 +17,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    # instantiate I AM THE INSTATIATOR
-    # i instantiate therefore i am
-      @user = User.new
-      # set values
-      @user.name = params[:user][:name]
-      # @author.last_name = params[:author][:last_name]
-      # save
+    @user = User.new id: params[:id]
       if @user.save
-        redirect_to "/users"
-      else
-        render :new
+        session[:user_id] = @user.id # remember who user is
+        redirect_to root_path
+        else
+          render :new
       end
-      # redirect or render form
   end
+
 
   def update
   end
@@ -41,4 +36,5 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to users_path
   end
-end
+
+end  # end of the class Users Controller
