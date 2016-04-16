@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   include SessionsHelper
+  helper_method :user_signed_in?
 
   before_action do
     @current_user = User.find_by id: session[:user_id]
@@ -15,5 +16,9 @@ class ApplicationController < ActionController::Base
       redirect_to sign_in_path, notice: "Requires Sign In"
     end  # end if
   end # end def authenticate
+
+  def user_signed_in?
+    @current_user.present?
+  end
 
 end # end class

@@ -1,10 +1,10 @@
 class HomepageController < ApplicationController
 
   def index
-    @posts = Post.all.order(likes: :desc)
-    @post = Post.find_by id: params[:id]
+    @post = Post.all.order(likes: :desc).first
+  #  @post = Post.find_by id: params[:id]
 
-    @hash = Gmaps4rails.build_markers(@posts) do |post, marker|
+    @hash = Gmaps4rails.build_markers(@post) do |post, marker|
         marker.lat post.latitude.to_f
         marker.lng post.longitude.to_f
         marker.picture({

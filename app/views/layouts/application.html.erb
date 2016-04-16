@@ -13,12 +13,16 @@
 <body>
   <header>
     <nav>
-      <%= link_to "Top Two", root_path %>
-      <%= link_to "Index List", posts_path %>
-      <%= link_to "NewPost", new_post_path %>
-      <%= link_to "New_User Sign_Up", new_user_path %>
-      <%= link_to "LOG_IN", sign_in_path %>
-      <%= link_to "LOG_OUT", sign_out_path %>
+      <%= link_to "HOME", root_path %>
+      <%= link_to "IMAGES", posts_path %>
+
+      <% if user_signed_in? %>
+        <%= link_to "NEW POST", new_post_path %>
+        <%= link_to "LOG_OUT", sign_out_path, method: :delete %>
+      <% else %>
+        <%= link_to "CREATE: New User", new_user_path %>
+        <%= link_to "LOG_IN", sign_in_path %>
+      <% end %>
     </nav>
   </header>
 

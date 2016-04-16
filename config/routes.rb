@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   # ...in the  SHOW, posts/id..returns HTML form for creating new comment
   #  .....goes to ....posts/id/comments/new  is a form for new comment in VIEW/comments/new ,,
   #  .form has a button to once entered, POSTs that new comment see J
-  post 'posts/:id/comments' => 'comments#create', as: :comments # J  post here
+  post 'posts/:id/comments' => 'comments#create_comment', as: :comments # J  post here
   #   is THE actual action of create/write/save  of data ..for NEW COMMENT... CHECK THIS!!
   #  the def create_comment in the COMMENTS CONTROLLER will then complete the action with a, ..
   #  .....................    redirect_to post_path(id: @post.id)   ...............

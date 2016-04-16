@@ -22,14 +22,48 @@ $(window).ready(function(){
 })
 </script>
 
-
+<div class="postwrapper">
+  <li>
 <h1><%= @post.title %></h1>
+
+
+<div class="imagebox">
+  <div class="tinybox">
+    <div class="image">
+      <a>
+      <%= image_tag attachment_url @post, :photo, :fill, 300,300 %>
+      </a>
+    </div>  <!-- close the image div for image -->
+  </div> <!-- close tinybox tag -->
+
+  <div class="timelatlong">
+    <div class="time">
+      <p> <%= @post.photo_date  %> </p>
+    </div> <!-- close time -->
+
+    <div class="lat">
+      <%= @post.latitude %>
+    </div> <!-- close lat -->
+
+    <div class="long">
+      <%= @post.longitude %>
+    </div> <!-- close long -->
+
+  </div> <!-- close details of time lat long -->
+  </div> <!-- close the imagebox -->
+</li>
+</div>
+
+<!-- vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv   -->
+
+
   <div class="count"><strong><%= @post.likes %></strong></div>
   <h3><%= @post.user.name %></h3>
   <%= @post.postbody %>
 
   <% @post.comments.order("id desc").each do |comment| %>
       <h3><%= comment.remark %></h3>
+      <p> <%= comment.user.name %> </p>
   <% end %>
 
   <!-- ADD COMMENT LINK PLACED HERE WILL TAKE YOU TO root/ -->

@@ -1,32 +1,26 @@
 class CommentsController < ApplicationController
 # check before commenting, eligible?
-  before_action do
-      if @current_user.nil?
-        redirect_to sign_in_path
-      end
-    end
+  before_action :authenticate_user!
 
   def new
-    @comments = Comment.new
+    @comment = Comment.new
     @users = User.all
-    @posts = Post.all
+    @post = Post.find_by id: params[:id]
   end
 
     def create_comment
-          @comment = Comment.new params.require(:comment).permit(:postbody, :post_id, :user_id)
+          @comment = Comment.new params.require(:comment).permit(:remark, :post_id)
+          @comment.user = @current_user
           @post = Post.find_by id: params[:id]
           @comment.remark = params[:comment][:remark]
           @comment.post_id = @post.id
           # save it
           if @comment.save
-            # sign in w/ sessions
-              session[:user_id] = @user.id # remember who user is
-  # redirect
             redirect_to post_path(id: @post.id)
           else
             render :new
           end  # if
-        end # end def create
+     end # end def create
 
   def index
   end
@@ -35,4 +29,3 @@ class CommentsController < ApplicationController
   end
 
 end   # class
-end

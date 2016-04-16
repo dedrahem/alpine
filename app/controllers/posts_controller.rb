@@ -41,12 +41,14 @@ class PostsController < ApplicationController
 
   def upvote
     @post = Post.find_by id: params[:id]
+    @post.likes = 0 if @post.likes.blank?
     @post.update likes: (@post.likes + 1)
     redirect_to posts_path
   end
 
   def downvote
     @post = Post.find_by id: params[:id]
+    @post.likes = 0 if @post.likes.blank?
     @post.update likes: (@post.likes - 1)
     redirect_to posts_path
   end

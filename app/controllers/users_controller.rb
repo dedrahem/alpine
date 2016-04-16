@@ -10,8 +10,14 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    @user = User.new # create the User object required as argument to
+    # ... all forms etc requiring an @user variable
   end
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password)
+  end
+  # create new users with STRONG PARAMETERS
 
   def edit
   end
