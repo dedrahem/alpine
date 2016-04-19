@@ -1,8 +1,32 @@
 <h1>Posts#Index</h1>
 
+<div id="mapid"></div>
+
+<script type="text/javascript">
+$(window).ready(function(){
+
+  var mymap = L.map('mapid').setView([29.73, -95.39], 10);
+
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 18,
+    id: 'jwo-cink.pia181pk',
+    accessToken: 'pk.eyJ1IjoiandvLWNpbmsiLCJhIjoiQVBfcW9OOCJ9.k2Q4vbfJs16Idk2cOziQYQ'
+}).addTo(mymap);
+
+  <% @posts.each do |post| %>
+    L.marker([<%= post.latitude %>, <%= post.longitude %>]).addTo(mymap)
+    .bindPopup('<%= image_tag attachment_url(post, :photo, :fill, 160, 160), class: "img-responsive" %>  <br /><%= link_to 'View Post', post_path(id: post.id ), class: "btn btn-default btn-block" %>');
+  <% end %>
+
+})
+</script>
+
+
+
 <div class="postindex">
   <ol>
-    <% @posts.each do |post| %>   <!-- # This do is ended down below -->
+    <% @posts.each do |post| %>   <!-- # This do IS ended below -->
 
     <div class="postwrapper">
       <li>
@@ -68,7 +92,10 @@
           <%= post.user.name %>
         </div> <!-- close name tag -->
         <div class="follow">
-        <p>  <%= 'ff' %> </p>
+        <p>  <%= 'not follow' %> </p>
+        </div> <!-- close follow tag -->
+        <div class="follow">
+        <p>  <%= 'follow' %> </p>
         </div> <!-- close follow tag -->
       </div> <!-- close namestalk -->
         <div class="textbody">

@@ -2,6 +2,9 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_many :comments
 
+  geocoded_by :location
+  after_validation :geocode
+
   attachment :photo, content_type: "image/jpeg"
   validates :title, :photo, presence: true
 

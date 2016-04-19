@@ -16,15 +16,16 @@ class PostsController < ApplicationController
     @posts = Post.all.order(likes: :desc)
     @users = User.all
     @comments = Comment.all
-    @hash = Gmaps4rails.build_markers(@posts) do |post, marker|
-        marker.lat post.latitude.to_f
-        marker.lng post.longitude.to_f
-        marker.picture({
-                  :url => post.photo_url,
-                  :width   => 20,
-                  :height  => 20
-          })
-    end
+    # @hash = Gmaps4rails.build_markers(@posts) do |post, marker|
+    #    marker.lat post.latitude.to_f
+    #    marker.lng post.longitude.to_f
+    #    marker.picture({
+    #              :url => post.photo_url,
+    #              :width   => 60,
+    #              :height  => 60
+    #      })
+    # end
+
   end
 
   def show
@@ -37,6 +38,15 @@ class PostsController < ApplicationController
         else
         @message = "Your Image and GPS MetaData Uploaded Successfully"
     end
+    # @hash = Gmaps4rails.build_markers(@posts) do |post, marker|
+    #    marker.lat post.latitude.to_f
+    #    marker.lng post.longitude.to_f
+    #    marker.picture({
+    #              :url => post.photo_url,
+    #              :width   => 60,
+    #              :height  => 60
+    #      })
+    # end
   end
 
   def upvote
@@ -52,7 +62,6 @@ class PostsController < ApplicationController
     @post.update likes: (@post.likes - 1)
     redirect_to posts_path
   end
-
 
   def edit
     @post = Post.find_by id: params[:id]
@@ -100,6 +109,5 @@ def delete   # IS IT DELETE OR DESTROY
   @post.destroy
   redirect_to posts_path
   end
-
 
 end # end class

@@ -14,7 +14,7 @@ $(window).ready(function(){
     lng: position.coords.longitude
   });
   handler.map.centerOn(marker);
-}
+  }
     ]);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
