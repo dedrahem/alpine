@@ -38,7 +38,7 @@ gem 'underscore-rails'
 
 gem 'twilio-ruby', '~> 4.11', '>= 4.11.1'
 
-gem 'authy', '~> 2.6', '>= 2.6.2'
+# gem 'authy', '~> 2.6', '>= 2.6.2'
 
 gem "refile", require: "refile/rails"
 
@@ -54,7 +54,7 @@ gem 'local_time', '~> 1.0', '>= 1.0.3'
 
 gem 'acts_as_follower', '~> 0.2.1'
 
-gem 'sinatra', '~> 1.4', '>= 1.4.7'
+# gem 'sinatra', '~> 1.4', '>= 1.4.7'
 
 gem 'exifr', '~> 1.2', '>= 1.2.4'
 
@@ -63,7 +63,7 @@ gem 'merit', '~> 2.3', '>= 2.3.3'
 gem 'rails_12factor', '~> 0.0.3', group: :production
 
 
-
+gem 'simple_form'
 
 gem 'geocoder'
 

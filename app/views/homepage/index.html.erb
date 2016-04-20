@@ -1,11 +1,31 @@
-<h1>Homepage#Index</h1>
-<p>root/app/views/homepage/index.html.erb</p>
 
-<div class="mapwrap">
-    <div style='width: 800px;'>
-      <div id="map" style='width: 800px; height: 400px;'></div>
+<div class="pagecontainer">
+
+<div class="columncontainer">
+
+  <div class="topbox">
+    <div class="leftbox"><p></p></div>
+    <div class="textbox">
+      <div class="title">
+        <h2><%= @post.title %></h2>
+      </div>
+      <div class="post">
+        <h2><%= @post.postbody %></h2>
+      </div>
+      <div class="user">
+        <h2><%= @post.user.name %></h2>
+      </div>
+    </div>  <!-- text box  -->
+
+    <div class="image">
+      <a>
+        <%= image_tag attachment_url(@post, :photo, :fill, 500, 500, format: :jpg )%>
+      </a>
     </div>
-</div>
+    <div class="rightbox"><p></p></div>
+  </div>  <!-- close the top box -->
+
+<div class="spacerbox"><p></p></div> <!-- close spacer -->
 
   <script>
   $(window).ready(function(){
@@ -18,17 +38,17 @@
   })
   </script>
 
-
-
-  <h2><%= @post.title %></h2>
-  <h2><%= @post.user.name %></h2>
-<div class="image">
-  <a>
-    <%= image_tag attachment_url(@post, :photo, :fill, 500, 500, format: :jpg )%>
-  </a>
-</div>
-
-
+  <div class="bottombox">
+    <div class="leftbox"><p></p></div>
+    <div class="mapwrap">
+      <div style="width">
+      <div id="map" style='width: 100%; height: 400px;'></div>
+     </div>
+    </div> <!-- close map wrap  -->
+    <div class="rightbox"><p></p></div>
+  </div> <!-- close the bottom box -->
+ </div>  <!-- column container -->
+</div> <!-- pagecontainer -->
 
 <!--  www.rubydoc.info/gems/gmaps4rails/2.1.2  -->
 <!--  2) HTML ___  Add a div to bear your map, example: -->
