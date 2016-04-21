@@ -1,6 +1,7 @@
-<h1>Posts#Index</h1>
 
-<div id="mapid"></div>
+<div class="postindex">
+<div class="mapdecor">
+<div id="mapid">
 
 <script type="text/javascript">
 $(window).ready(function(){
@@ -22,9 +23,9 @@ $(window).ready(function(){
 })
 </script>
 
+</div>   <!-- closes map id -->
+</div> <!-- map decor -->
 
-
-<div class="postindex">
   <ol>
     <% @posts.each do |post| %>   <!-- # This do IS ended below -->
 
@@ -39,22 +40,24 @@ $(window).ready(function(){
               </a>
             </div>  <!-- close the image div for image -->
           </div> <!-- close tinybox tag -->
+        </div> <!-- close the imagebox -->
+        <div class="timewrapper">
 
           <div class="timelatlong">
             <div class="time">
               <p> <%= post.photo_date  %> </p>
             </div> <!-- close time -->
 
-            <div class="lat">
-              <%= post.latitude %>
-            </div> <!-- close lat -->
+        <!--     <div class="lat">       -->
+        <!--       <#%= post.latitude %>  -->
+        <!--     </div>  close lat       -->
 
-            <div class="long">
-              <%= post.longitude %>
-            </div> <!-- close long -->
+        <!--     <div class="long">  -->
+        <!--       <#%= post.longitude %>  -->
+        <!--     </div>  close long   -->
 
           </div> <!-- close details of time lat long -->
-          </div> <!-- close the imagebox -->
+        </div> <!-- close the timewrapper -->
 <!-- vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv   -->
 
 <!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM  -->
@@ -78,8 +81,6 @@ $(window).ready(function(){
           <%= "LIKES" %>
         </div>
 
-
-
       </div>  <!-- this closes the poststats div -->
 
 <!-- WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW   -->
@@ -91,17 +92,20 @@ $(window).ready(function(){
         <div class="name">
           <%= post.user.name %>
         </div> <!-- close name tag -->
-        <div class="follow">
-        <p>  <%= 'not follow' %> </p>
-        </div> <!-- close follow tag -->
-        <div class="follow">
-        <p>  <%= 'follow' %> </p>
-        </div> <!-- close follow tag -->
+        <!--  <div class="follow"> -->
+        <!--    <p>  </p> -->
+        <!--  </div> < close follow tag -->
+        <!--  <div class="follow"> -->
+        <!--    <p> </p> -->
+        <!--  </div> <close follow tag -->
       </div> <!-- close namestalk -->
+    </div> <!-- this close namebody -->
+
+      <div class="bodyofpost">
         <div class="textbody">
-          <%= post.postbody %>
+        <p>  <%= post.postbody %> </p>
         </div>  <!-- close textbody tag  -->
-      </div> <!-- close the namebody tag  -->
+      </div> <!-- close bodyofpost  -->
 
       <div class="emptydiv">
         <p></p>

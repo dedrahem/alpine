@@ -1,14 +1,29 @@
 
-#mapid { height: 600px}
 
+.mapdecor {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  height: auto;
+  border-style: solid;
+  border-width: 6px;
+  border-color: gray;
+  padding-bottom: 50px;
+}
 
+  #mapid { height: 500px}
+  #mapid { width: 90%}
+  #mapid {border-style: solid}
+  #mapid {border-color: gray}
+  #mapid {border-width: 2px}
 
 
 .postindex {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: auto;
+  align-items: flex-start;
+  width: 100%;
   height: auto;
   border-style: dashed;
   border-width: 2px;
@@ -18,7 +33,9 @@
 .postwrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items:flex-start;
+  width: 100%;
+  height: auto;
   border-style: dotted;
   border-width: 2px;
   border-color: gray;
@@ -26,13 +43,21 @@
 
 .imagebox {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  width: 100%;
+  height: auto;
   border-style: double;
   border-width: 2px;
   border-color: red;
 }
+
 .tinybox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: auto;
   border-style: dotted;
   border-width: 2px;
   border-color: red;
@@ -41,8 +66,8 @@
 .image img{
 display: block;
 align-content:center;
-width: 300px;
-height: 300px;
+width: 400px;
+height: 400px;
 margin-top: 6px;
 margin-bottom: 6px;
 margin-left: 0px;
@@ -53,7 +78,19 @@ border-color:black;
 padding: 4px;
 }
 
-.timelatlong{
+.timewrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  border-style: dotted;
+  border-width: 2px;
+  border-color: red;
+ }
+
+
+.timelatlong {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -64,7 +101,7 @@ padding: 4px;
 
 .time {
     justify-content: left;
-    width: 80%;
+    width: 90%;
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
     font-weight: bold;
@@ -74,34 +111,36 @@ padding: 4px;
     border-color: gray;
 }
 
-.lat {
-    justify-content: left;
-    width: 80%;
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    font-weight: bold;
-    color: black;
-    border-style: dotted;
-    border-width: 2px;
-    border-color: gray;
-}
+// .lat {
+//      justify-content: left;
+//      width: 80%;
+//      font-family: 'Roboto', sans-serif;
+//      font-size: 15px;
+//      font-weight: bold;
+//      color: black;
+//      border-style: dotted;
+//      border-width: 2px;
+//      border-color: gray;
+// }
 
-.long {
-    justify-content: left;
-    width: 80%;
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    font-weight: bold;
-    color: black;
-    border-style: double;
-    border-width: 2px;
-    border-color: gray;
-}
+//  .long {
+//      justify-content: left;
+//      width: 80%;
+//      font-family: 'Roboto', sans-serif;
+//      font-size: 15px;
+//      font-weight: bold;
+//      color: black;
+//      border-style: double;
+//      border-width: 2px;
+//      border-color: gray;
+//  }
 
 .poststats {
     display: flex;
     flex-direction: row;
     align-items:flex-end;
+    width: 100%;
+    height: auto;
     border-style: dashed;
     border-width: 2px;
     border-color: blue;
@@ -148,8 +187,10 @@ h2 {font-size: 15px;}
 
 .namebody {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  align-items: center;
   padding-top: 6px;
   padding-bottom: 10px;
   border-style: dashed;
@@ -161,8 +202,9 @@ h2 {font-size: 15px;}
   display: flex;
   flex-direction: row;
   width: 98%;
+  height: auto;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: space-around;
   padding-top: 6px;
   padding-bottom: 10px;
   border-style: dashed;
@@ -171,10 +213,10 @@ h2 {font-size: 15px;}
 }
 
 .name {
-  justify-content: left;
+  justify-content: center;
     width: 80%;
     font-family: 'Roboto', sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: bold;
     color: black;
     border-style: double;
@@ -184,16 +226,29 @@ h2 {font-size: 15px;}
     background-color: #ddedec;
 }
 
-.follow {
-  border-style: double;
+// .follow {
+//   border-style: double;
+//   border-width: 2px;
+//   border-color: green;
+//   background-color: #dfedac;
+// }
+
+.bodyofpost {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  width: 100%;
+  height: auto;
   border-width: 2px;
-  border-color: green;
-  background-color: #dfedac;
+  border-color: yellow;
+  text-decoration: none;
+  background-color: #ddedec;
 }
 
 .textbody {
   justify-content: left;
-  width: 80%;
+  width: 98%;
+  height: auto;
   font-family: 'Roboto', sans-serif;
   font-size: 15px;
   font-weight: bold;
@@ -206,11 +261,8 @@ h2 {font-size: 15px;}
 }
 
 .emptydiv {
-  justify-content: left;
-  width: 80%;
-  font-family: 'Roboto', sans-serif;
-  font-size: 15px;
-  font-weight: bold;
+  width: 100%;
+  height: 30px;
   color: black;
   border-width: 2px;
   border-color: gray;
