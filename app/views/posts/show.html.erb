@@ -1,52 +1,79 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
-<div class="map-page">
-    <div id="map"></div>
+<div class="container">
+
+<div class="page-title">
+  <h1 class="text-center"><%= @post.title %></h1>
+</div>
+
+<div class="text-center post-detail-image">
+  <%= image_tag attachment_url @post, :photo, :fill, 500,500 %>
 </div>
 
 
-<div class="postwrapper">
-  <li>
-<h1><%= @post.title %></h1>
+
+<script type="text/javascript">
+$(window).ready(function(){
+
+  var mymap = L.map('mapid').setView([<%= @post.latitude %>, <%= @post.longitude %>], 16);
+
+  L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 18,
+    id: 'jwo-cink.pia181pk',
+    accessToken: 'pk.eyJ1IjoiandvLWNpbmsiLCJhIjoiQVBfcW9OOCJ9.k2Q4vbfJs16Idk2cOziQYQ'
+}).addTo(mymap);
+
+    L.marker([<%= @post.latitude %>, <%= @post.longitude %>]).addTo(mymap)
+})
+</script>
 
 
-<div class="imagebox">
-  <div class="tinybox">
-    <div class="image">
-      <a>
-      <%= image_tag attachment_url @post, :photo, :fill, 300,300 %>
-      </a>
-    </div>  <!-- close the image div for image -->
-  </div> <!-- close tinybox tag -->
+<div class="row">
+  <div class="col-sm-6">
+    <div class="postwrapper">
 
-  <div class="timelatlong">
-    <div class="time">
-      <p> <%= @post.photo_date  %> </p>
-    </div> <!-- close time -->
+    <div class="imagebox">
 
-    <div class="lat">
-      <%= @post.latitude %>
-    </div> <!-- close lat -->
+      <div class="">
+        <div class="time">
+          <p> <%= @post.photo_date.strftime("%b %d, %Y")  %> </p>
+        </div> <!-- close time -->
 
-    <div class="long">
-      <%= @post.longitude %>
-    </div> <!-- close long -->
+        <div class="lat">
+          Latitude: <%= @post.latitude %>
+        </div> <!-- close lat -->
 
-  </div> <!-- close details of time lat long -->
-  </div> <!-- close the imagebox -->
-</li>
+        <div class="long">
+          Longitude: <%= @post.longitude %>
+        </div> <!-- close long -->
+
+      </div> <!-- close details of time lat long -->
+      </div> <!-- close the imagebox -->
+
+    </div>
+      <div class="count"><strong><%= pluralize @post.likes, 'like' %></strong></div>
+      <h3>Posted by: <%= @post.user.name %></h3>
+      <blockquote><%= @post.postbody %></blockquote>
+
+
+
+
+  </div>
+
+  <div class="col-sm-6">
+    <div id="mapid" class="post-detail"></div>
+  </div>
+
 </div>
+
+
 
 <!-- vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv   -->
 
 
-  <div class="count"><strong><%= @post.likes %></strong></div>
-  <h3><%= @post.user.name %></h3>
-  <%= @post.postbody %>
 
+  <h3>Comments</h3>
   <% @post.comments.order("id desc").each do |comment| %>
-      <h3><%= comment.remark %></h3>
-      <p> <%= comment.user.name %> </p>
+      <blockquote> <%= comment.remark %> <cite><%= comment.user.name %></cite> </blockquote>
   <% end %>
 
   <!-- ADD COMMENT LINK PLACED HERE WILL TAKE YOU TO root/ -->
@@ -54,3 +81,5 @@
 
 <%= link_to "ADD COMMENT", new_comment_path, class: "btn btn-default"%>
 <%= link_to "delete", post_path(id: @post.id), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure you want to delete?"}%>
+
+</div>

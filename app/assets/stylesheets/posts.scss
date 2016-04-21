@@ -1,15 +1,25 @@
 
 
+.postindex {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: auto;
+}
+
+
 .mapdecor {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   width: 100%;
   height: auto;
-  border-style: solid;
-  border-width: 6px;
-  border-color: gray;
-  padding-bottom: 50px;
+  padding: 10px;
+}
+
+img {
+  max-width: 100%;
 }
 
   #mapid { height: 500px}
@@ -18,38 +28,43 @@
   #mapid {border-color: gray}
   #mapid {border-width: 2px}
 
+  #mapid.post-detail { height: 300px}
+  #mapid.post-detail { width: 100%}
 
-.postindex {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.post-detail-image {
+  margin-bottom: 3rem;
+}
+
+.buffer {
   width: 100%;
-  height: auto;
-  border-style: dashed;
-  border-width: 2px;
-  border-color: gray;
+  height: 20px;
+  align-self: center;
 }
 
 .postwrapper {
   display: flex;
-  flex-direction: column;
-  align-items:flex-start;
+  flex-direction: row;
+  align-items: flex-start;
   width: 100%;
   height: auto;
-  border-style: dotted;
-  border-width: 2px;
-  border-color: gray;
+}
+
+.leftbox {
+  width: 2%;
+  height: auto;
+}
+
+.rightbox {
+  width: 2%;
+  height: auto;
 }
 
 .imagebox {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 100%;
+  width: 48%;
   height: auto;
-  border-style: double;
-  border-width: 2px;
-  border-color: red;
 }
 
 .tinybox {
@@ -58,92 +73,56 @@
   align-items: center;
   width: 100%;
   height: auto;
-  border-style: dotted;
-  border-width: 2px;
-  border-color: red;
 }
 
 .image img{
-display: block;
-align-content:center;
-width: 400px;
-height: 400px;
-margin-top: 6px;
-margin-bottom: 6px;
-margin-left: 0px;
-margin-right: 0px;
-border-style: solid;
-border-width: 3px;
-border-color:black;
-padding: 4px;
+  display: block;
+  align-content:center;
+  width: 100%;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  margin-left: 0px;
+  margin-right: 0px;
+  border-style: solid;
+  border-width: 3px;
+  border-color:black;
+  padding: 4px;
 }
 
 .timewrapper {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 48%;
   height: auto;
-  border-style: dotted;
-  border-width: 2px;
-  border-color: red;
+  padding: 1em;
  }
 
 
 .timelatlong {
   display: flex;
   flex-direction: row;
+  width: 100%;
+  height: auto;
   align-items: center;
-  border-style: dashed;
-  border-width: 2px;
-  border-color: red;
 }
 
 .time {
     justify-content: left;
-    width: 90%;
+    width: 100%;
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
     font-weight: bold;
     color: black;
-    border-style: double;
-    border-width: 2px;
-    border-color: gray;
 }
 
-// .lat {
-//      justify-content: left;
-//      width: 80%;
-//      font-family: 'Roboto', sans-serif;
-//      font-size: 15px;
-//      font-weight: bold;
-//      color: black;
-//      border-style: dotted;
-//      border-width: 2px;
-//      border-color: gray;
-// }
-
-//  .long {
-//      justify-content: left;
-//      width: 80%;
-//      font-family: 'Roboto', sans-serif;
-//      font-size: 15px;
-//      font-weight: bold;
-//      color: black;
-//      border-style: double;
-//      border-width: 2px;
-//      border-color: gray;
-//  }
 
 .poststats {
     display: flex;
-    flex-direction: row;
-    align-items:flex-end;
+    flex-direction: column;
+    align-items:flex-start;
     width: 100%;
     height: auto;
-    border-style: dashed;
-    border-width: 2px;
-    border-color: blue;
 }
 
 .titlestat {
@@ -165,9 +144,6 @@ padding: 4px;
     font-size: 20px;
     padding-left: 10px;
     padding-right: 10px;
-    border-style: dashed;
-    border-width: 2px;
-    border-color: black;
 }
 
 .liketext {
@@ -175,46 +151,26 @@ padding: 4px;
   color: red;
   padding-left: 10px;
   padding-right: 10px;
-  border-style: dashed;
-  border-width: 2px;
-  border-color: black;
 }
 
 h1 {font-size: 15px;}
 
 h2 {font-size: 15px;}
 
-
-.namebody {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: auto;
-  align-items: center;
-  padding-top: 6px;
-  padding-bottom: 10px;
-  border-style: dashed;
-  border-width: 2px;
-  border-color: red;
-}
-
 .namestalk {
   display: flex;
   flex-direction: row;
-  width: 98%;
+  width: 100%;
   height: auto;
   align-items: flex-start;
   justify-content: space-around;
   padding-top: 6px;
   padding-bottom: 10px;
-  border-style: dashed;
-  border-width: 2px;
-  border-color: black;
 }
 
 .name {
   justify-content: center;
-    width: 80%;
+    width: 100%;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-weight: bold;
@@ -224,14 +180,8 @@ h2 {font-size: 15px;}
     border-color: gray;
     text-decoration: none;
     background-color: #ddedec;
+    padding: 6px;
 }
-
-// .follow {
-//   border-style: double;
-//   border-width: 2px;
-//   border-color: green;
-//   background-color: #dfedac;
-// }
 
 .bodyofpost {
   display: flex;
@@ -239,10 +189,6 @@ h2 {font-size: 15px;}
   align-content: center;
   width: 100%;
   height: auto;
-  border-width: 2px;
-  border-color: yellow;
-  text-decoration: none;
-  background-color: #ddedec;
 }
 
 .textbody {
@@ -253,19 +199,10 @@ h2 {font-size: 15px;}
   font-size: 15px;
   font-weight: bold;
   color: black;
-  border-style: double;
-  border-width: 2px;
-  border-color: yellow;
-  text-decoration: none;
-  background-color: #ddedec;
 }
 
 .emptydiv {
   width: 100%;
   height: 30px;
   color: black;
-  border-width: 2px;
-  border-color: gray;
-  text-decoration: none;
-  background-color: #ddedec;
 }

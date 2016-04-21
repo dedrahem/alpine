@@ -26,11 +26,14 @@ $(window).ready(function(){
 </div>   <!-- closes map id -->
 </div> <!-- map decor -->
 
+<div class="buffer"> <p></p> </div>  <!--  open and close div -->
+
   <ol>
     <% @posts.each do |post| %>   <!-- # This do IS ended below -->
 
     <div class="postwrapper">
-      <li>
+      <div class="leftbox"><p></p></div>
+
         <!--  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
         <div class="imagebox">
           <div class="tinybox">
@@ -41,26 +44,18 @@ $(window).ready(function(){
             </div>  <!-- close the image div for image -->
           </div> <!-- close tinybox tag -->
         </div> <!-- close the imagebox -->
+<!--  map is boxed and closed here ....    -->
+
         <div class="timewrapper">
 
           <div class="timelatlong">
             <div class="time">
-              <p> <%= post.photo_date  %> </p>
+              <p> <%= post.photo_date.strftime("%b %d, %Y")  %> </p>
             </div> <!-- close time -->
 
-        <!--     <div class="lat">       -->
-        <!--       <#%= post.latitude %>  -->
-        <!--     </div>  close lat       -->
-
-        <!--     <div class="long">  -->
-        <!--       <#%= post.longitude %>  -->
-        <!--     </div>  close long   -->
 
           </div> <!-- close details of time lat long -->
-        </div> <!-- close the timewrapper -->
-<!-- vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv   -->
 
-<!-- MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM  -->
 
       <div class="poststats">
         <div class="titlestat">
@@ -73,33 +68,21 @@ $(window).ready(function(){
           <%= link_to downvote_post_path(id: post.id), method: :post, class: 'btn btn-default btn-sm' do%>
           <i class="glyphicon glyphicon-triangle-bottom"></i>
           <% end %>
-        </div>
-        <div class="likes">
-          <strong><%= post.likes %></strong>
-        </div>
-        <div class="liketext">
-          <%= "LIKES" %>
+
+          <span class="likes">
+            <strong><%= pluralize post.likes, 'like' %></strong>
+          </span>
         </div>
 
-      </div>  <!-- this closes the poststats div -->
 
-<!-- WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW   -->
+  </div>  <!-- this closes the poststats div -->
 
-<!-- oooooooooooooooooooooooooooooooooooooooooooooooooooooo  -->
 
-      <div class="namebody">
         <div class="namestalk">
         <div class="name">
           <%= post.user.name %>
         </div> <!-- close name tag -->
-        <!--  <div class="follow"> -->
-        <!--    <p>  </p> -->
-        <!--  </div> < close follow tag -->
-        <!--  <div class="follow"> -->
-        <!--    <p> </p> -->
-        <!--  </div> <close follow tag -->
       </div> <!-- close namestalk -->
-    </div> <!-- this close namebody -->
 
       <div class="bodyofpost">
         <div class="textbody">
@@ -107,11 +90,18 @@ $(window).ready(function(){
         </div>  <!-- close textbody tag  -->
       </div> <!-- close bodyofpost  -->
 
+  </div> <!-- close the timewrapper -->
+
+  <div class="rightbox"><p></p></div>  <!-- open and close div -->
+
+  </div> <!-- close the POST WRAPPER -->
+
       <div class="emptydiv">
         <p></p>
       </div>  <!-- close the empty div -->
-      </li>
-    </div> <!-- close the POST WRAPPER -->
+
+
+
     <% end %> <!-- # This is the do post end -->
   </ol>
 </div> <!-- close the post INDEX div -->
