@@ -13,10 +13,10 @@ end
 
 if Post.count == 0
 puts 'creating posts'
-a = Post.create! title: 'Where is Seabass', postbody: 'At the d and q beer station on richmond', user_id: zack.id, photo: File.open("#{Rails.root}/app/assets/images/dq.jpg", "rb"), likes: 1, latitude:'30.27777', longitude:'-97.7434343'
-b = Post.create! title: 'Cool black and white', postbody: 'This commemorates a dark event in the city past', user_id: dommie.id, photo: File.open("#{Rails.root}/app/assets/images/moody.jpg", "rb"), likes: 6, latitude:'32.6767676', longitude:'-96.8080808'
-c = Post.create! title: 'Title, If the house is a rockin', postbody: '....dont bother knockin come on in.', user_id: doug.id, photo: File.open("#{Rails.root}/app/assets/images/stevie.jpg","rb"), likes: 3, latitude:'30.367584',longitude:'-103.6666'
-d = Post.create! title: 'Title, A senorita and skull', postbody: 'South side of richmond, near montrose facing west', user_id: jim.id, photo: File.open("#{Rails.root}/app/assets/images/chulita.jpg","rb"), likes: 8, latitude: '29.765748', longitude:'-95.354637'
+a = Post.create! title: 'Where is Seabass', postbody: 'At the d and q beer station on richmond', user_id: zack.id, photo: File.open("#{Rails.root}/app/assets/images/dq.JPG", "rb"), likes: 1, latitude:'30.27777', longitude:'-97.7434343'
+b = Post.create! title: 'Cool black and white', postbody: 'This commemorates a dark event in the city past', user_id: dommie.id, photo: File.open("#{Rails.root}/app/assets/images/moody.JPG", "rb"), likes: 6, latitude:'32.6767676', longitude:'-96.8080808'
+c = Post.create! title: 'Title, If the house is a rockin', postbody: '....dont bother knockin come on in.', user_id: doug.id, photo: File.open("#{Rails.root}/app/assets/images/stevie.JPG","rb"), likes: 3, latitude:'30.367584',longitude:'-103.6666'
+d = Post.create! title: 'Title, A senorita and skull', postbody: 'South side of richmond, near montrose facing west', user_id: jim.id, photo: File.open("#{Rails.root}/app/assets/images/chulita.JPG","rb"), likes: 8, latitude: '29.765748', longitude:'-95.354637'
 end
 
 if Comment.count == 0
