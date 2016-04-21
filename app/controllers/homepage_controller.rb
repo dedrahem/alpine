@@ -16,7 +16,6 @@ class HomepageController < ApplicationController
   end # close the index def
 
 
-
   def show
     @post = Post.find_by id: params[:id]
     @posts = Post.all
